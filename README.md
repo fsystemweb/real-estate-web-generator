@@ -2,12 +2,14 @@
 
 A small FastAPI service that turns structured property data (JSON) into SEO-optimized HTML listings in English, Portuguese or Spanish. It is an educational example of LLM generation, automatic evaluation with retries, tracing and prompt management.
 
+**Docs:** <https://fsystemweb.github.io/real-state-web-generator/> (source in `docs/`, run with `docsify serve docs`)
+
 ## Features
 - Generates structured HTML: title, meta description, description, key features, neighborhood and call to action
 - Multilingual: `en`, `pt`, `es`
 - An LLM judge scores each result; the listing is regenerated up to 3 times while the score is below 3/5
 - Optional tracing and prompt management with [Comet Opik](https://github.com/comet-ml/opik)
-- Evaluation datasets and fact-based metrics (see [docs/EVALUATION.md](docs/EVALUATION.md))
+- Evaluation datasets and fact-based metrics (see [docs/evaluation.md](docs/evaluation.md))
 
 ## Architecture
 ```mermaid
@@ -86,7 +88,7 @@ app/
   models.py          request models
   prompts/           prompt templates (examples and fallback)
 evaluation/          datasets, metrics and the evaluation run
-docs/EVALUATION.md   how the evaluation works
+docs/                documentation site (Docsify)
 public/index.html    demo page
 ```
 
@@ -98,7 +100,7 @@ Everything here is off unless `OPIK_URL_OVERRIDE` is set.
 3. Prompts: `app/prompts/*.txt` are examples and the fallback. On startup the API pushes them to Opik as `real-estate-generator` and `real-estate-evaluator` if they are missing (existing ones are never overwritten; `python -m app.prompt_loader` pushes a new version by hand). The evaluation datasets are created the same way as `real-estate-en`, `-pt` and `-es`. If the prompts exist in Opik, they are used instead (latest version, read at startup; the log says which source was used). Variables use Mustache with triple braces, e.g. `{{{property_json}}}`, so HTML is not escaped.
 
 ## Evaluation
-Datasets in `evaluation/datasets/` are run through the generator and scored with fact precision and fact recall in an Opik experiment: `python -m evaluation.run` (paid API calls). Details in [docs/EVALUATION.md](docs/EVALUATION.md).
+Datasets in `evaluation/datasets/` are run through the generator and scored with fact precision and fact recall in an Opik experiment: `python -m evaluation.run` (paid API calls). Details in [docs/evaluation.md](docs/evaluation.md).
 
 ## License
 MIT License – free to use and modify.
