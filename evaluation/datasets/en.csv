@@ -1,0 +1,51 @@
+title,city,neighborhood,bedrooms,bathrooms,area_sqm,balcony,parking,elevator,floor,year_built,price,listing_type,language,expected_facts
+2-bedroom apartment in Ancoats for rent with parking,Manchester,Ancoats,2,2,90,False,True,True,4,1985,3600,rent,en,2|2|90|4|1985|3600
+3-bedroom apartment in Lincoln Park for rent with a balcony,Chicago,Lincoln Park,3,1,100,True,False,True,12,2008,,rent,en,3|1|100|12|2008
+1-bedroom apartment in Camden for sale with a balcony,London,Camden,1,1,50,True,True,False,3,1953,1060000,sale,en,1|1|50|3|1953|1060000
+2-bedroom apartment in Leith for rent with a lift,Edinburgh,Leith,2,1,80,False,False,True,3,2022,600,rent,en,2|1|80|3|2022|600
+3-bedroom apartment in Greenwich for sale with a balcony,London,Greenwich,3,2,100,True,True,True,5,2010,1015000,sale,en,3|2|100|5|2010|1015000
+2-bedroom apartment in Ancoats for rent with a balcony,Manchester,Ancoats,2,1,80,True,True,True,10,1927,2050,rent,en,2|1|80|10|1927|2050
+2-bedroom apartment in Ranelagh for sale with a balcony,Dublin,Ranelagh,2,2,80,True,False,False,6,1941,205000,sale,en,2|2|80|6|1941|205000
+4-bedroom apartment in Greenwich for rent with parking,London,Greenwich,4,3,145,False,True,True,10,1963,650,rent,en,4|3|145|10|1963|650
+3-bedroom apartment in East Austin for rent with a balcony,Austin,East Austin,3,1,100,True,False,True,4,1949,3450,rent,en,3|1|100|4|1949|3450
+1-bedroom apartment in Notting Hill for rent with a balcony,London,Notting Hill,1,1,50,True,False,True,9,1954,750,rent,en,1|1|50|9|1954|750
+2-bedroom apartment in Notting Hill for sale with a balcony,London,Notting Hill,2,1,70,True,False,False,2,1967,775000,sale,en,2|1|70|2|1967|775000
+1-bedroom apartment in Brooklyn Heights for sale with parking,New York,Brooklyn Heights,1,1,60,False,True,True,8,1945,120000,sale,en,1|1|60|8|1945|120000
+2-bedroom apartment in Notting Hill for rent,London,Notting Hill,2,2,70,False,False,False,2,1954,3000,rent,en,2|2|70|2|1954|3000
+1-bedroom apartment in Ranelagh for sale with parking,Dublin,Ranelagh,1,1,45,False,True,True,5,1995,1180000,sale,en,1|1|45|5|1995|1180000
+2-bedroom apartment in London for rent with a balcony,London,,2,2,90,True,False,False,5,,,rent,en,2|2|90|5
+4-bedroom apartment in East Austin for rent,Austin,East Austin,4,1,130,False,False,False,4,1942,2250,rent,en,4|1|130|4|1942|2250
+2-bedroom apartment in Lincoln Park for sale with parking,Chicago,Lincoln Park,2,1,75,False,True,True,7,2014,555000,sale,en,2|1|75|7|2014|555000
+3-bedroom apartment in Lincoln Park for rent,Chicago,Lincoln Park,3,2,100,False,False,False,1,1953,1800,rent,en,3|2|100|1|1953|1800
+4-bedroom apartment in Leith for sale with a balcony,Edinburgh,Leith,4,1,120,True,True,True,9,1981,245000,sale,en,4|1|120|9|1981|245000
+2-bedroom apartment in Leith for rent with parking,Edinburgh,Leith,2,1,90,False,True,True,9,2019,950,rent,en,2|1|90|9|2019|950
+3-bedroom apartment in Notting Hill for sale with a lift,London,Notting Hill,3,1,120,False,False,True,3,1958,1065000,sale,en,3|1|120|3|1958|1065000
+2-bedroom apartment in Ranelagh for sale with a lift,Dublin,Ranelagh,2,2,85,False,False,True,11,2010,595000,sale,en,2|2|85|11|2010|595000
+4-bedroom apartment in Clifton for sale with a balcony,Bristol,Clifton,4,3,140,True,True,True,1,1945,770000,sale,en,4|3|140|1|1945|770000
+3-bedroom apartment in Leith for sale with a balcony,Edinburgh,Leith,3,1,105,True,False,False,11,1951,435000,sale,en,3|1|105|11|1951|435000
+1-bedroom apartment in Clifton for sale with parking,Bristol,Clifton,1,1,65,False,True,True,,,175000,sale,en,1|1|65|175000
+3-bedroom apartment in Notting Hill for sale with parking,London,Notting Hill,3,2,110,False,True,True,7,1961,1010000,sale,en,3|2|110|7|1961|1010000
+2-bedroom apartment in London for sale with parking,London,,2,2,95,False,True,True,7,1990,985000,sale,en,2|2|95|7|1990|985000
+3-bedroom apartment in Camden for sale with a balcony,London,Camden,3,2,100,True,True,False,4,1932,845000,sale,en,3|2|100|4|1932|845000
+Studio in Brooklyn Heights for rent with a balcony,New York,Brooklyn Heights,,,120,True,False,False,10,1967,2600,rent,en,120|10|1967|2600
+2-bedroom apartment in Ancoats for sale with parking,Manchester,Ancoats,2,1,95,False,True,True,7,1938,165000,sale,en,2|1|95|7|1938|165000
+2-bedroom apartment in Ancoats for rent with a balcony,Manchester,Ancoats,2,2,85,True,True,False,4,1986,3150,rent,en,2|2|85|4|1986|3150
+2-bedroom apartment in Ancoats for sale with a balcony,Manchester,Ancoats,2,2,85,True,True,False,1,1936,260000,sale,en,2|2|85|1|1936|260000
+2-bedroom apartment in Clifton for rent with a balcony,Bristol,Clifton,2,1,75,True,False,False,7,1947,750,rent,en,2|1|75|7|1947|750
+1-bedroom apartment in Clifton for rent with a balcony,Bristol,Clifton,1,1,60,True,True,False,10,1940,2150,rent,en,1|1|60|10|1940|2150
+1-bedroom apartment in Leith for sale with parking,Edinburgh,Leith,1,1,70,False,True,False,3,1995,465000,sale,en,1|1|70|3|1995|465000
+3-bedroom apartment in Clifton for sale with a balcony,Bristol,Clifton,3,2,100,True,False,False,12,2010,520000,sale,en,3|2|100|12|2010|520000
+3-bedroom apartment in Camden for sale with a balcony,London,Camden,3,2,110,True,True,True,8,1977,1050000,sale,en,3|2|110|8|1977|1050000
+2-bedroom apartment in London for sale with parking,London,,2,2,90,False,True,False,2,2023,700000,sale,en,2|2|90|2|2023|700000
+3-bedroom apartment in Ranelagh for rent with a balcony,Dublin,Ranelagh,3,1,100,True,True,True,5,2011,2000,rent,en,3|1|100|5|2011|2000
+2-bedroom apartment in Leith for rent,Edinburgh,Leith,2,2,80,False,False,False,2,1929,,rent,en,2|2|80|2|1929
+3-bedroom apartment in Notting Hill for sale with parking,London,Notting Hill,3,2,105,False,True,False,4,1933,845000,sale,en,3|2|105|4|1933|845000
+4-bedroom apartment in Lincoln Park for sale with a balcony,Chicago,Lincoln Park,4,2,145,True,True,False,9,1952,725000,sale,en,4|2|145|9|1952|725000
+4-bedroom apartment in Greenwich for rent with parking,London,Greenwich,4,2,130,False,True,True,12,2006,2000,rent,en,4|2|130|12|2006|2000
+2-bedroom apartment in Camden for rent with a lift,London,Camden,2,1,95,False,False,True,9,1985,1650,rent,en,2|1|95|9|1985|1650
+1-bedroom apartment in Camden for rent with parking,London,Camden,1,1,65,False,True,True,6,1929,1500,rent,en,1|1|65|6|1929|1500
+1-bedroom apartment in Brooklyn Heights for rent with parking,New York,Brooklyn Heights,1,1,60,False,True,False,6,1937,2800,rent,en,1|1|60|6|1937|2800
+2-bedroom apartment in Greenwich for rent with parking,London,Greenwich,2,2,80,False,True,True,2,2021,650,rent,en,2|2|80|2|2021|650
+2-bedroom apartment in Ancoats for rent with a lift,Manchester,Ancoats,2,2,85,False,False,True,1,1957,1150,rent,en,2|2|85|1|1957|1150
+3-bedroom apartment in East Austin for sale,Austin,East Austin,3,2,,,,,9,1962,280000,sale,en,3|2|9|1962|280000
+1-bedroom apartment in Clifton for rent with a balcony,Bristol,Clifton,1,1,60,True,True,False,8,2001,2200,rent,en,1|1|60|8|2001|2200
