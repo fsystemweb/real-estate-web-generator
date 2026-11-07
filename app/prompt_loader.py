@@ -20,7 +20,7 @@ def opik_enabled():
     return bool(os.getenv("OPIK_URL_OVERRIDE") or os.getenv("OPIK_API_KEY"))
 
 
-def load_prompt(name, local_file):
+def load_prompt(name):
     """Return (template_text, source). The source is "opik" or "local". Never raises."""
     if opik_enabled():
         try:
@@ -33,7 +33,7 @@ def load_prompt(name, local_file):
         except Exception as e:
             logger.warning("Opik unavailable for prompt '%s': %s", name, e)
     logger.info("Prompt '%s' loaded from local file", name)
-    return local_file.read_text(), "local"
+    return PROMPTS[name].read_text(), "local"
 
 
 if __name__ == "__main__":

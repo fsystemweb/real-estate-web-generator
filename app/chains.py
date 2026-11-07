@@ -7,7 +7,7 @@ import json
 
 from fastapi import HTTPException
 from app.models import PropertyData
-from app.prompt_loader import PROMPTS, load_prompt
+from app.prompt_loader import load_prompt, opik_enabled
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -18,7 +18,7 @@ logging.basicConfig(level=logging.INFO)
 
 
 # Opik tracing is opt-in: it only turns on when an Opik URL or API key is set.
-OPIK_ENABLED = bool(os.getenv("OPIK_URL_OVERRIDE") or os.getenv("OPIK_API_KEY"))
+OPIK_ENABLED = opik_enabled()
 if OPIK_ENABLED:
     from opik import track
     from opik.integrations.langchain import OpikTracer
@@ -41,8 +41,8 @@ if not openai_api_key:
 
 # Load prompt templates (Opik first, local files in app/prompts/ as fallback).
 # Both use Mustache syntax: {{{variable}}} (triple braces so HTML is not escaped).
-generator_template, _ = load_prompt("real-estate-generator", PROMPTS["real-estate-generator"])
-evaluator_template, _ = load_prompt("real-estate-evaluator", PROMPTS["real-estate-evaluator"])
+generator_template, _ = load_prompt("real-estate-generator")
+evaluator_template, _ = load_prompt("real-estate-evaluator")
 
 generator_prompt = PromptTemplate.from_template(generator_template, template_format="mustache")
 evaluator_prompt = PromptTemplate.from_template(evaluator_template, template_format="mustache")
@@ -65,18 +65,12 @@ def generate_and_evaluate(property_data: PropertyData):
     retries = 0
     failed_criteria_log = []
 
+    language_names = {"en": "English", "pt": "Portuguese", "es": "Spanish"}
+    language_code = property_data.language if property_data.language in language_names else "en"
+    language_name = language_names[language_code]
+    logger.info("Language Code: %s", language_code)
+
     while retries < MAX_RETRIES:
-        property_dict = property_data.model_dump()
-        language_code = property_dict.get("language", "en")
-        
-        if language_code not in ["en", "pt", "es"]:
-            language_code = "en"
-        
-        logger.info("Language Code: %s", language_code)
-
-        language_names = {"en": "English", "pt": "Portuguese", "es": "Spanish"}
-        language_name = language_names[language_code]
-
         html_output = generator_chain.invoke({
             "property_json": property_data.model_dump_json(),
             "language_name": language_name,
