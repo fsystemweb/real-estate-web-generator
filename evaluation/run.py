@@ -8,10 +8,6 @@ Needs OPENAI_API_KEY and a running Opik (OPIK_URL_OVERRIDE). Makes paid API call
 import argparse
 import os
 
-from dotenv import load_dotenv
-
-load_dotenv()
-
 import opik
 from opik.evaluation import evaluate
 
