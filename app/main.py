@@ -1,11 +1,20 @@
+from contextlib import asynccontextmanager
+
 import uvicorn
 
 from fastapi import FastAPI
 from app.models import PropertyData
 from app.chains import generate_and_evaluate
+from app.opik_sync import sync_to_opik
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
+@asynccontextmanager
+async def lifespan(_):
+    sync_to_opik()  # create missing prompts and datasets in Opik
+    yield
+
+
+app = FastAPI(lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
