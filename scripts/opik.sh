@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # Start a lightweight local Opik (Comet) for tracing, prompts and evaluation. Educational use only.
 #
 # Fetches only the official docker-compose files into .opik/ (git-ignored) and starts the
@@ -12,7 +12,7 @@
 #   status  show running containers
 #   logs    follow the logs
 #   reset   stop it and DELETE all Opik data
-set -euo pipefail
+set -eu
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 DIR="$ROOT/.opik"
