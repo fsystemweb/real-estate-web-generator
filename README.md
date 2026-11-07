@@ -13,8 +13,8 @@ A small FastAPI service that turns structured property data (JSON) into SEO-opti
 ```mermaid
 flowchart LR
     A[POST /generate-listing] --> B[Validate request]
-    B --> C[Generator: LLM light]
-    C --> D[Evaluator: LLM stronger]
+    B --> C[Generator: LLM stronger]
+    C --> D[Evaluator: LLM light]
     D --> E{Score >= 3?}
     E -- yes --> F[HTML response]
     E -- "no, attempts left" --> C
@@ -24,7 +24,7 @@ flowchart LR
     C -.-> T[(Opik traces)]
     D -.-> T
 ```
-The concrete models are set in `app/chains.py`.
+The generator uses the stronger model and the evaluator the light one. The defaults are in `app/chains.py`; override them with `GENERATOR_LLM` and `EVALUATOR_LLM`.
 
 ## Quick start
 ```bash
@@ -40,6 +40,8 @@ Optional demo page (in another terminal): `python -m http.server 5500`, then ope
 | Variable | Required | Description |
 |---|---|---|
 | `OPENAI_API_KEY` | yes | OpenAI API key |
+| `GENERATOR_LLM` | no | Model that generates the listing (default `gpt-4-turbo`) |
+| `EVALUATOR_LLM` | no | Model that scores it (default `gpt-4o-mini`) |
 | `OPIK_URL_OVERRIDE` | no | Opik API URL, e.g. `http://localhost:5173/api`. Turns on tracing and Opik prompts |
 | `OPIK_PROJECT_NAME` | no | Opik project for traces |
 
