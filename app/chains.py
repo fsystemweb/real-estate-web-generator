@@ -17,6 +17,23 @@ logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
 
+# Opik tracing is opt-in: it only turns on when an Opik URL or API key is set.
+OPIK_ENABLED = bool(os.getenv("OPIK_URL_OVERRIDE") or os.getenv("OPIK_API_KEY"))
+if OPIK_ENABLED:
+    from opik import track
+    from opik.integrations.langchain import OpikTracer
+else:
+    def track(name=None):  # no-op decorator when Opik is off
+        return lambda fn: fn
+
+
+def trace_config(attempt):
+    """LangChain config that sends each chain call to Opik (empty when Opik is off)."""
+    if not OPIK_ENABLED:
+        return {}
+    return {"callbacks": [OpikTracer(tags=[f"attempt-{attempt}"])]}
+
+
 # Ensure your OpenAI API key is set
 openai_api_key = os.getenv("OPENAI_API_KEY")
 if not openai_api_key:
@@ -45,6 +62,7 @@ evaluator_chain = evaluator_prompt | evaluator_llm | output_parser
 MAX_RETRIES = 3
 MIN_SCORE = 3
 
+@track(name="generate_listing")
 def generate_and_evaluate(property_data: PropertyData):
     logger.info("Request: %s", property_data)
     retries = 0
@@ -66,10 +84,10 @@ def generate_and_evaluate(property_data: PropertyData):
             "property_json": property_data.model_dump_json(),
             "language_name": language_name,
             "language_code": language_code
-        })
+        }, config=trace_config(retries + 1))
         logger.info("HTML Output: %s", html_output)
         
-        evaluation_str = evaluator_chain.invoke({"html_output": html_output})
+        evaluation_str = evaluator_chain.invoke({"html_output": html_output}, config=trace_config(retries + 1))
         evaluation_str = re.sub(r"^```.*\n|```$", "", evaluation_str.strip(), flags=re.MULTILINE)
         
         try:
