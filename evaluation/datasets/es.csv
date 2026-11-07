@@ -1,0 +1,51 @@
+title,city,neighborhood,bedrooms,bathrooms,area_sqm,balcony,parking,elevator,floor,year_built,price,listing_type,language,expected_facts
+Piso de 4 habitaciones en Malasaña en venta con balcón,Madrid,Malasaña,4,1,145,True,True,False,11,1952,935000,sale,es,4|1|145|11|1952|935000
+Piso de 1 habitaciones en Triana en alquiler con ascensor,Sevilla,Triana,1,1,65,False,False,True,6,2007,950,rent,es,1|1|65|6|2007|950
+Piso de 2 habitaciones en Chamberí en alquiler con balcón,Madrid,Chamberí,2,1,90,True,True,True,7,2009,1000,rent,es,2|1|90|7|2009|1000
+Piso de 2 habitaciones en Triana en alquiler con balcón,Sevilla,Triana,2,2,85,True,False,True,3,1944,,rent,es,2|2|85|3|1944
+Piso de 2 habitaciones en Indautxu en venta con balcón,Bilbao,Indautxu,2,1,95,True,False,False,11,1937,945000,sale,es,2|1|95|11|1937|945000
+Piso de 1 habitaciones en Gràcia en alquiler con garaje,Barcelona,Gràcia,1,1,65,False,True,True,1,1971,2900,rent,es,1|1|65|1|1971|2900
+Piso de 2 habitaciones en Triana en venta con balcón,Sevilla,Triana,2,1,90,True,False,False,2,2006,795000,sale,es,2|1|90|2|2006|795000
+Piso de 1 habitaciones en Triana en alquiler con balcón,Sevilla,Triana,1,1,60,True,False,True,7,2020,1700,rent,es,1|1|60|7|2020|1700
+Piso de 3 habitaciones en Malasaña en alquiler con balcón,Madrid,Malasaña,3,1,115,True,False,False,10,1932,2700,rent,es,3|1|115|10|1932|2700
+Piso de 2 habitaciones en Poblenou en alquiler con balcón,Barcelona,Poblenou,2,2,85,True,False,True,11,1972,3250,rent,es,2|2|85|11|1972|3250
+Piso de 4 habitaciones en Valencia en venta con garaje,Valencia,,4,2,120,False,True,True,6,1932,1180000,sale,es,4|2|120|6|1932|1180000
+Piso de 3 habitaciones en Roma Norte en venta,Ciudad de México,Roma Norte,3,3,115,False,False,False,3,1959,445000,sale,es,3|3|115|3|1959|445000
+Piso de 3 habitaciones en Roma Norte en venta con balcón,Ciudad de México,Roma Norte,3,1,110,True,False,True,1,2019,675000,sale,es,3|1|110|1|2019|675000
+Piso de 3 habitaciones en Ruzafa en venta con balcón,Valencia,Ruzafa,3,1,120,True,True,False,2,1985,235000,sale,es,3|1|120|2|1985|235000
+Piso de 1 habitaciones en Centro en venta con balcón,Málaga,Centro,1,1,65,True,True,False,6,1964,250000,sale,es,1|1|65|6|1964|250000
+Piso de 1 habitaciones en Indautxu en alquiler con balcón,Bilbao,Indautxu,1,1,50,True,False,False,10,1945,900,rent,es,1|1|50|10|1945|900
+Piso de 4 habitaciones en Malasaña en alquiler con garaje,Madrid,Malasaña,4,1,125,False,True,False,4,2021,3100,rent,es,4|1|125|4|2021|3100
+Piso de 2 habitaciones en Triana en alquiler,Sevilla,Triana,2,1,75,False,False,False,10,1960,2650,rent,es,2|1|75|10|1960|2650
+Piso de 2 habitaciones en Poblenou en alquiler con balcón,Barcelona,Poblenou,2,2,75,True,True,False,9,1933,1900,rent,es,2|2|75|9|1933|1900
+Piso de 4 habitaciones en Palermo en venta con ascensor,Buenos Aires,Palermo,4,3,140,False,False,True,11,1982,840000,sale,es,4|3|140|11|1982|840000
+Piso de 3 habitaciones en Chamberí en alquiler con balcón,Madrid,Chamberí,3,1,95,True,True,True,6,1962,3250,rent,es,3|1|95|6|1962|3250
+Piso de 3 habitaciones en Palermo en venta con ascensor,Buenos Aires,Palermo,3,2,95,False,False,True,6,2013,395000,sale,es,3|2|95|6|2013|395000
+Piso de 2 habitaciones en Chamberí en venta,Madrid,Chamberí,2,2,70,False,False,False,6,1983,980000,sale,es,2|2|70|6|1983|980000
+Piso de 2 habitaciones en Gràcia en alquiler con balcón,Barcelona,Gràcia,2,1,75,True,True,True,4,1957,1700,rent,es,2|1|75|4|1957|1700
+Piso de 3 habitaciones en Ruzafa en venta con garaje,Valencia,Ruzafa,3,1,100,False,True,True,1,1930,505000,sale,es,3|1|100|1|1930|505000
+Piso de 2 habitaciones en Malasaña en alquiler con balcón,Madrid,Malasaña,2,2,70,True,True,False,9,2004,2650,rent,es,2|2|70|9|2004|2650
+Piso de 1 habitaciones en Gràcia en alquiler con balcón,Barcelona,Gràcia,1,1,50,True,False,True,6,2000,700,rent,es,1|1|50|6|2000|700
+Piso de 3 habitaciones en Triana en alquiler con garaje,Sevilla,Triana,3,3,110,False,True,False,11,2015,3250,rent,es,3|3|110|11|2015|3250
+Piso de 3 habitaciones en Palermo en venta con garaje,Buenos Aires,Palermo,3,2,120,False,True,True,8,1938,1030000,sale,es,3|2|120|8|1938|1030000
+Piso de 3 habitaciones en Poblenou en alquiler con ascensor,Barcelona,Poblenou,3,3,110,False,False,True,2,1992,3100,rent,es,3|3|110|2|1992|3100
+Piso de 2 habitaciones en Indautxu en venta,Bilbao,Indautxu,2,1,75,False,False,False,12,1959,1095000,sale,es,2|1|75|12|1959|1095000
+Piso de 4 habitaciones en Indautxu en venta con garaje,Bilbao,Indautxu,4,3,125,False,True,True,,,250000,sale,es,4|3|125|250000
+Piso de 2 habitaciones en Malasaña en alquiler con balcón,Madrid,Malasaña,2,2,85,True,True,False,11,1992,2550,rent,es,2|2|85|11|1992|2550
+Piso de 3 habitaciones en Indautxu en alquiler con garaje,Bilbao,Indautxu,3,2,115,False,True,False,12,1995,,rent,es,3|2|115|12|1995
+Piso de 4 habitaciones en Sevilla en venta con garaje,Sevilla,,4,1,125,False,True,True,3,1942,215000,sale,es,4|1|125|3|1942|215000
+Piso de 1 habitaciones en Gràcia en venta con balcón,Barcelona,Gràcia,1,1,50,True,True,True,9,1941,440000,sale,es,1|1|50|9|1941|440000
+Piso de 1 habitaciones en Indautxu en venta con balcón,Bilbao,Indautxu,1,1,50,True,False,False,4,1963,1100000,sale,es,1|1|50|4|1963|1100000
+Piso de 3 habitaciones en Poblenou en alquiler,Barcelona,Poblenou,3,2,110,False,False,False,7,1976,1200,rent,es,3|2|110|7|1976|1200
+Piso de 3 habitaciones en Madrid en alquiler con garaje,Madrid,,3,2,105,False,True,True,11,,,rent,es,3|2|105|11
+Piso de 3 habitaciones en Chamberí en venta con balcón,Madrid,Chamberí,3,1,115,True,False,True,12,1983,580000,sale,es,3|1|115|12|1983|580000
+Piso de 3 habitaciones en Gràcia en venta con ascensor,Barcelona,Gràcia,3,3,95,False,False,True,2,2020,725000,sale,es,3|3|95|2|2020|725000
+Piso de 3 habitaciones en Centro en venta,Málaga,Centro,3,2,,,,,1,2001,1130000,sale,es,3|2|1|2001|1130000
+Piso de 3 habitaciones en Roma Norte en venta con balcón,Ciudad de México,Roma Norte,3,1,120,True,False,False,11,1939,950000,sale,es,3|1|120|11|1939|950000
+Piso de 1 habitaciones en Palermo en alquiler con balcón,Buenos Aires,Palermo,1,1,60,True,False,True,5,2005,2350,rent,es,1|1|60|5|2005|2350
+Piso de 4 habitaciones en Centro en venta con balcón,Málaga,Centro,4,3,135,True,False,False,5,1978,395000,sale,es,4|3|135|5|1978|395000
+Piso de 2 habitaciones en Palermo en alquiler con garaje,Buenos Aires,Palermo,2,2,70,False,True,True,11,2018,2500,rent,es,2|2|70|11|2018|2500
+Piso de 2 habitaciones en Triana en venta,Sevilla,Triana,2,2,75,False,False,False,12,2001,225000,sale,es,2|2|75|12|2001|225000
+Estudio en Chamberí en alquiler,Madrid,Chamberí,,,85,False,False,False,9,1992,1600,rent,es,85|9|1992|1600
+Piso de 1 habitaciones en Poblenou en alquiler con balcón,Barcelona,Poblenou,1,1,65,True,False,True,2,1972,2350,rent,es,1|1|65|2|1972|2350
+Piso de 2 habitaciones en Roma Norte en venta,Ciudad de México,Roma Norte,2,2,85,False,False,False,6,1983,320000,sale,es,2|2|85|6|1983|320000

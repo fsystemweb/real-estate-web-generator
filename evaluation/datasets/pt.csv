@@ -1,0 +1,51 @@
+title,city,neighborhood,bedrooms,bathrooms,area_sqm,balcony,parking,elevator,floor,year_built,price,listing_type,language,expected_facts
+Apartamento T2 em Montenegro para arrendar com varanda,Faro,Montenegro,2,2,80,True,False,True,8,1935,700,rent,pt,2|2|80|8|1935|700
+Apartamento T4 em Santa Clara para venda com elevador,Coimbra,Santa Clara,4,2,120,False,False,True,5,1954,1020000,sale,pt,4|2|120|5|1954|1020000
+Apartamento T3 em Estoril para arrendar com garagem,Cascais,Estoril,3,2,120,False,True,True,5,1983,2550,rent,pt,3|2|120|5|1983|2550
+Apartamento T2 em Foz do Douro para venda com garagem,Porto,Foz do Douro,2,2,85,False,True,False,7,1928,550000,sale,pt,2|2|85|7|1928|550000
+Apartamento T2 em Santa Clara para arrendar,Coimbra,Santa Clara,2,2,90,False,False,False,8,1929,1150,rent,pt,2|2|90|8|1929|1150
+Apartamento T3 em Pinheiros para arrendar com garagem,São Paulo,Pinheiros,3,2,95,False,True,False,5,1970,3050,rent,pt,3|2|95|5|1970|3050
+Apartamento T3 em Montenegro para venda com varanda,Faro,Montenegro,3,3,105,True,False,True,2,1928,410000,sale,pt,3|3|105|2|1928|410000
+Apartamento T2 em Santa Clara para venda com elevador,Coimbra,Santa Clara,2,2,95,False,False,True,7,1959,1185000,sale,pt,2|2|95|7|1959|1185000
+Apartamento T2 em Foz do Douro para arrendar com varanda,Porto,Foz do Douro,2,1,75,True,True,False,3,1955,1050,rent,pt,2|1|75|3|1955|1050
+Apartamento T2 em Bonfim para venda com varanda,Porto,Bonfim,2,2,70,True,False,False,4,1991,225000,sale,pt,2|2|70|4|1991|225000
+Apartamento T1 em Estoril para arrendar com garagem,Cascais,Estoril,1,1,60,False,True,True,4,1936,1300,rent,pt,1|1|60|4|1936|1300
+Apartamento T4 em Bonfim para venda com varanda,Porto,Bonfim,4,2,120,True,True,False,11,1928,895000,sale,pt,4|2|120|11|1928|895000
+Apartamento T2 em Santa Clara para arrendar com varanda,Coimbra,Santa Clara,2,2,75,True,False,False,9,2001,1450,rent,pt,2|2|75|9|2001|1450
+Apartamento T1 em Centro para arrendar,Braga,Centro,1,1,55,False,False,False,8,1948,1950,rent,pt,1|1|55|8|1948|1950
+Apartamento T4 em Parque das Nações para arrendar com elevador,Lisboa,Parque das Nações,4,3,145,False,False,True,5,1981,1750,rent,pt,4|3|145|5|1981|1750
+Apartamento T2 em Alfama para arrendar com varanda,Lisboa,Alfama,2,2,85,True,False,False,6,1981,1750,rent,pt,2|2|85|6|1981|1750
+Apartamento T2 em Parque das Nações para venda com elevador,Lisboa,Parque das Nações,2,1,90,False,False,True,5,1928,855000,sale,pt,2|1|90|5|1928|855000
+Apartamento T2 em Santa Clara para venda com varanda,Coimbra,Santa Clara,2,2,85,True,True,True,10,1964,910000,sale,pt,2|2|85|10|1964|910000
+Estúdio em Parque das Nações para arrendar com varanda,Lisboa,Parque das Nações,,,125,True,False,True,10,1989,2700,rent,pt,125|10|1989|2700
+Apartamento T2 em Estoril para venda com varanda,Cascais,Estoril,2,2,70,True,False,True,9,1931,490000,sale,pt,2|2|70|9|1931|490000
+Apartamento T2 em Campo de Ourique para arrendar com varanda,Lisboa,Campo de Ourique,2,1,95,True,False,False,5,2023,1350,rent,pt,2|1|95|5|2023|1350
+Apartamento T2 em Pinheiros para arrendar com varanda,São Paulo,Pinheiros,2,1,75,True,False,False,9,1940,3250,rent,pt,2|1|75|9|1940|3250
+Apartamento T4 em Centro para arrendar,Braga,Centro,4,1,135,False,False,False,12,1947,2300,rent,pt,4|1|135|12|1947|2300
+Apartamento T4 em Estoril para arrendar com elevador,Cascais,Estoril,4,2,130,False,False,True,9,1995,,rent,pt,4|2|130|9|1995
+Apartamento T3 em Santa Clara para venda com varanda,Coimbra,Santa Clara,3,2,105,True,False,False,11,1966,250000,sale,pt,3|2|105|11|1966|250000
+Apartamento T1 em Santa Clara para arrendar com garagem,Coimbra,Santa Clara,1,1,50,False,True,True,12,1984,2200,rent,pt,1|1|50|12|1984|2200
+Apartamento T1 em Parque das Nações para arrendar com varanda,Lisboa,Parque das Nações,1,1,65,True,False,True,11,1997,750,rent,pt,1|1|65|11|1997|750
+Apartamento T2 em Estoril para arrendar com varanda,Cascais,Estoril,2,2,95,True,True,False,8,2016,3450,rent,pt,2|2|95|8|2016|3450
+Apartamento T2 em Lisboa para venda com garagem,Lisboa,,2,2,80,False,True,True,3,1980,430000,sale,pt,2|2|80|3|1980|430000
+Apartamento T2 em Pinheiros para venda com varanda,São Paulo,Pinheiros,2,2,75,True,False,False,5,1936,695000,sale,pt,2|2|75|5|1936|695000
+Apartamento T1 em Campo de Ourique para venda com varanda,Lisboa,Campo de Ourique,1,1,50,True,True,True,1,1950,915000,sale,pt,1|1|50|1|1950|915000
+Apartamento T3 em Estoril para arrendar com varanda,Cascais,Estoril,3,3,110,True,False,True,8,2005,900,rent,pt,3|3|110|8|2005|900
+Apartamento T4 em Estoril para venda,Cascais,Estoril,4,1,,,,,7,1943,955000,sale,pt,4|1|7|1943|955000
+Apartamento T3 em Porto para arrendar,Porto,,3,3,120,False,False,False,11,,,rent,pt,3|3|120|11
+Apartamento T2 em Foz do Douro para arrendar com varanda,Porto,Foz do Douro,2,2,95,True,True,False,7,1950,1300,rent,pt,2|2|95|7|1950|1300
+Apartamento T2 em Bonfim para arrendar com varanda,Porto,Bonfim,2,1,75,True,False,True,4,1962,2900,rent,pt,2|1|75|4|1962|2900
+Apartamento T1 em Campo de Ourique para venda com varanda,Lisboa,Campo de Ourique,1,1,60,True,True,True,10,1934,925000,sale,pt,1|1|60|10|1934|925000
+Apartamento T1 em Parque das Nações para venda com elevador,Lisboa,Parque das Nações,1,1,50,False,False,True,10,1964,1075000,sale,pt,1|1|50|10|1964|1075000
+Apartamento T2 em Santa Clara para venda,Coimbra,Santa Clara,2,1,80,False,False,False,6,1973,390000,sale,pt,2|1|80|6|1973|390000
+Apartamento T1 em Centro para venda com garagem,Braga,Centro,1,1,70,False,True,False,1,1968,655000,sale,pt,1|1|70|1|1968|655000
+Apartamento T3 em Campo de Ourique para venda com garagem,Lisboa,Campo de Ourique,3,3,95,False,True,True,9,2009,710000,sale,pt,3|3|95|9|2009|710000
+Apartamento T3 em Foz do Douro para venda com varanda,Porto,Foz do Douro,3,1,120,True,True,False,12,1993,355000,sale,pt,3|1|120|12|1993|355000
+Apartamento T1 em Santa Clara para venda com garagem,Coimbra,Santa Clara,1,1,45,False,True,True,11,1955,995000,sale,pt,1|1|45|11|1955|995000
+Apartamento T3 em Montenegro para venda com elevador,Faro,Montenegro,3,3,110,False,False,True,1,1978,380000,sale,pt,3|3|110|1|1978|380000
+Apartamento T3 em Foz do Douro para venda,Porto,Foz do Douro,3,1,110,False,False,False,,,1070000,sale,pt,3|1|110|1070000
+Apartamento T1 em Montenegro para arrendar com varanda,Faro,Montenegro,1,1,60,True,True,False,12,1946,2500,rent,pt,1|1|60|12|1946|2500
+Apartamento T1 em Parque das Nações para arrendar com garagem,Lisboa,Parque das Nações,1,1,60,False,True,True,11,2004,,rent,pt,1|1|60|11|2004
+Apartamento T3 em Foz do Douro para venda,Porto,Foz do Douro,3,1,105,False,False,False,10,2009,590000,sale,pt,3|1|105|10|2009|590000
+Apartamento T2 em Braga para venda com garagem,Braga,,2,1,80,False,True,False,5,2017,1190000,sale,pt,2|1|80|5|2017|1190000
+Apartamento T2 em Santa Clara para arrendar com garagem,Coimbra,Santa Clara,2,2,80,False,True,True,9,1989,3750,rent,pt,2|2|80|9|1989|3750

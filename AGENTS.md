@@ -15,7 +15,7 @@ FastAPI service that turns structured property JSON into SEO-optimized, multilin
 - `app/chains.py`: generator and evaluator chains plus the retry loop (up to 3 attempts while the score is below 3/5).
 - `app/models.py`: Pydantic request and response models.
 - `app/prompts/`: prompt templates as `.txt` files, loaded by `app/chains.py`. Edit prompts there, not inline.
-- `evaluation/`: `data_input.json` sample inputs and `pipeline.py`, which writes results JSON, CSV and charts.
+- `evaluation/`: `datasets/` (per-language CSVs, see `datasets/README.md`), `dataset.py` (CSV loader) and `pipeline.py`, which takes an optional language (`python -m evaluation.pipeline pt`) and writes results JSON, CSV and charts.
 - `public/index.html`: static front end that calls the API.
 - Config comes from env vars; the only documented one is `OPENAI_API_KEY` (see `.env.example`).
 - If you rename a prompt file, update the file names read in `app/chains.py`.

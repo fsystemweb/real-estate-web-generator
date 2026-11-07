@@ -1,35 +1,49 @@
 import os
+import re
 import json
+import sys
 import pandas as pd
 import matplotlib.pyplot as plt
 from fastapi.testclient import TestClient
 
-from app.main import app  # adjust path if needed
+from app.main import app
+from evaluation.dataset import LANGUAGES, load_rows
 
 client = TestClient(app)
 
 # --- File paths ---
 BASE_DIR = "evaluation"
-INPUT_FILE = os.path.join(BASE_DIR, "data_input.json")
 RESULTS_DIR = os.path.join(BASE_DIR, "results")
 os.makedirs(RESULTS_DIR, exist_ok=True)
 
 RESULTS_JSON = os.path.join(RESULTS_DIR, "evaluation_results.json")
 SUMMARY_CSV = os.path.join(RESULTS_DIR, "evaluation_summary.csv")
 
-# --- Load input ---
-with open(INPUT_FILE, "r", encoding="utf-8") as f:
-    properties = json.load(f)
+
+def facts_found(html, facts):
+    """Share of expected facts (numbers) that appear in the HTML."""
+    if not facts:
+        return None
+    text = re.sub(r"(?<=\d)[,. ](?=\d{3})", "", html)  # 420,000 -> 420000
+    text = re.sub(r"(\d+)\.0\b", r"\1", text)
+    found = [f for f in facts if re.search(rf"(?<!\d){re.escape(f.removesuffix('.0'))}(?!\d)", text)]
+    return len(found) / len(facts)
+
+
+# --- Load input: optional language argument, e.g. `python -m evaluation.pipeline pt` ---
+languages = sys.argv[1:] or LANGUAGES
 
 results = []
 
-for prop in properties:
-    response = client.post("/generate-listing", json=prop)
-    response_data = response.json()
-    results.append({
-        "input": prop,
-        "output": response_data
-    })
+for language in languages:
+    for prop, expected in load_rows(language):
+        response = client.post("/generate-listing", json=prop)
+        response_data = response.json()
+        results.append({
+            "input": prop,
+            "expected_facts": expected,
+            "output": response_data
+        })
 
 # Save raw results
 with open(RESULTS_JSON, "w", encoding="utf-8") as f:
@@ -49,8 +63,9 @@ for item in results:
         "multilingual_adaptability": eval_data.get("multilingual_adaptability"),
         "total_score": eval_data.get("total_score"),
         "missing_or_invalid_tags": ", ".join(eval_data.get("missing_or_invalid_tags", [])),
+        "facts_found": facts_found(output.get("html", ""), item["expected_facts"]),
         "retries": output.get("retries", 0),
-        "failed_criteria_log": "; ".join(output.get("failed_criteria_log", []))
+        "failed_criteria_log": "; ".join(str(x) for x in output.get("failed_criteria_log", []))
     })
 
 df = pd.DataFrame(rows)
@@ -60,7 +75,7 @@ df.to_csv(SUMMARY_CSV, index=False)
 
 # 1. Average scores by language
 avg_scores = df.groupby("language")[["structure_compliance", "language_fluency_seo",
-                                     "multilingual_adaptability", "total_score"]].mean()
+                                     "multilingual_adaptability", "total_score", "facts_found"]].mean()
 
 avg_scores.plot(kind="bar")
 plt.title("Average Evaluation Scores by Language")
