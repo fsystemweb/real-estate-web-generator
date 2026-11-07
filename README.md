@@ -89,6 +89,17 @@ Example response:
     - ``` http://localhost:5500/public/ ```
 
 
+## Observability (optional)
+Traces (prompts, outputs, evaluator scores and each retry) can be sent to a local [Comet Opik](https://github.com/comet-ml/opik) server. It is off by default.
+
+ 1. Start Opik (needs Docker), following the [official docs](https://www.comet.com/docs/opik/self-host/local_deployment):
+  - ``` git clone https://github.com/comet-ml/opik.git ```
+  - ``` cd opik && ./opik.sh ```
+ 2. In this project's `.env`, uncomment `OPIK_URL_OVERRIDE` (see `.env.example`) and restart the API.
+ 3. Call `POST /generate-listing` and open `http://localhost:5173`. Each call is one trace; every attempt is tagged `attempt-1`, `attempt-2`, ...
+
+Without these variables the app runs exactly as before.
+
 ## Evaluation Criteria by Request
 Each generated listing is automatically evaluated against:
 

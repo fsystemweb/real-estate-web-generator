@@ -17,7 +17,7 @@ FastAPI service that turns structured property JSON into SEO-optimized, multilin
 - `app/prompts/`: prompt templates as `.txt` files, loaded by `app/chains.py`. Edit prompts there, not inline.
 - `evaluation/`: `datasets/` (per-language CSVs, see `datasets/README.md`), `dataset.py` (CSV loader) and `pipeline.py`, which takes an optional language (`python -m evaluation.pipeline pt`) and writes results JSON, CSV and charts.
 - `public/index.html`: static front end that calls the API.
-- Config comes from env vars; the only documented one is `OPENAI_API_KEY` (see `.env.example`).
+- Config comes from env vars: `OPENAI_API_KEY`, plus optional `OPIK_URL_OVERRIDE` / `OPIK_PROJECT_NAME` to enable Opik tracing (see `.env.example`). Tracing is off when they are unset.
 - If you rename a prompt file, update the file names read in `app/chains.py`.
 
 ## Boundaries
