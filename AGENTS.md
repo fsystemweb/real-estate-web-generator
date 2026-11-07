@@ -14,11 +14,11 @@ FastAPI service that turns structured property JSON into SEO-optimized, multilin
 - `app/main.py`: FastAPI app and the `POST /generate-listing` route.
 - `app/chains.py`: generator and evaluator chains plus the retry loop (up to 3 attempts while the score is below 3/5).
 - `app/models.py`: Pydantic request and response models.
-- `app/prompts/`: prompt templates as `.txt` files, loaded by `app/chains.py`. Edit prompts there, not inline.
+- `app/prompts/`: prompt templates as `.txt` files (Mustache syntax, `{{{variable}}}`), examples and fallback. `app/prompt_loader.py` loads each prompt from Opik first when configured, else from these files; `app/chains.py` uses it. Edit prompts there, not inline.
 - `evaluation/`: `datasets/` (per-language CSVs, see `datasets/README.md`), `dataset.py` (CSV loader) `metrics.py` (fact precision and recall as Opik metrics), `test_metrics.py` (offline checks) and `run.py` (the evaluation entry point).
 - `public/index.html`: static front end that calls the API.
 - Config comes from env vars: `OPENAI_API_KEY`, plus optional `OPIK_URL_OVERRIDE` / `OPIK_PROJECT_NAME` to enable Opik tracing (see `.env.example`). Tracing is off when they are unset.
-- If you rename a prompt file, update the file names read in `app/chains.py`.
+- If you rename a prompt file, update the file names in `PROMPTS` in `app/prompt_loader.py`.
 
 ## Boundaries
 - Always: check that edits to `app/prompts/` still cover en, pt and es.
