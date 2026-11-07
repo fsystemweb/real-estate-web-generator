@@ -56,9 +56,3 @@ Each run has two scores, averaged over all items: `fact_precision` and `fact_rec
 ![Experiment results](assets/opik-experiment-results.jpg)
 
 Open one run to see every item: the input property, the generated HTML, the tokens, the cost and the scores. Use it to compare runs before and after you change a prompt.
-
-## Online evaluation
-
-![Online evaluation](assets/opik-online-evaluation.jpg)
-
-Opik can also score live traces with rules. This page is empty here on purpose: the light local setup skips the part (`python-backend`) that these rules need. The judge in this project runs **inside the app** instead, as the second chain you saw above.
