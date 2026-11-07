@@ -1,71 +1,64 @@
 # real-state-web-generator
-This project provides a REST API that transforms structured property data (JSON) into SEO-optimized, multilingual HTML listings for real estate websites.
-It uses FastAPI, LangChain, and OpenAI for generation and evaluation.
+
+A small FastAPI service that turns structured property data (JSON) into SEO-optimized HTML listings in English, Portuguese or Spanish. It is an educational example of LLM generation, automatic evaluation with retries, tracing and prompt management.
 
 ## Features
-- ✅ Generates structured HTML (title, meta description, description, features, neighborhood, CTA)
-- 🌍 Multilingual support: English 🇬🇧, Portuguese 🇵🇹 and Spanish 🇪🇸
-- 🔍 SEO keyword enrichment
-- 🧪 Automatic evaluation of output:
-    - Structure compliance
-    - Language fluency & SEO
-    - Multilingual adaptability
+- Generates structured HTML: title, meta description, description, key features, neighborhood and call to action
+- Multilingual: `en`, `pt`, `es`
+- An LLM judge scores each result; the listing is regenerated up to 3 times while the score is below 3/5
+- Optional tracing and prompt management with [Comet Opik](https://github.com/comet-ml/opik)
+- Evaluation datasets and fact-based metrics (see [docs/EVALUATION.md](docs/EVALUATION.md))
 
-- 🔁 Retry mechanism: Up to 3 attempts if evaluation score < 3/5
-- 📦 Modular design: Prompts stored separately for easier editing
+## Architecture
+```mermaid
+flowchart LR
+    A[POST /generate-listing] --> B[Validate request]
+    B --> C[Generator: LLM light]
+    C --> D[Evaluator: LLM stronger]
+    D --> E{Score >= 3?}
+    E -- yes --> F[HTML response]
+    E -- "no, attempts left" --> C
+    E -- "no, 3 attempts used" --> G[Error response]
+    P[(Prompts: Opik or local files)] -.-> C
+    P -.-> D
+    C -.-> T[(Opik traces)]
+    D -.-> T
+```
+The concrete models are set in `app/chains.py`.
 
-## Solution
+## Quick start
+```bash
+python3.12 -m venv venv
+source venv/bin/activate          # Windows: .\venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+cp .env.example .env              # then set OPENAI_API_KEY
+python -m app.main                # API on http://localhost:8000
+```
+Optional demo page (in another terminal): `python -m http.server 5500`, then open `http://localhost:5500/public/`.
 
-![Solution Diagram](solution.png)
+## Configuration
+| Variable | Required | Description |
+|---|---|---|
+| `OPENAI_API_KEY` | yes | OpenAI API key |
+| `OPIK_URL_OVERRIDE` | no | Opik API URL, e.g. `http://localhost:5173/api`. Turns on tracing and Opik prompts |
+| `OPIK_PROJECT_NAME` | no | Opik project for traces |
 
-## Installation
- - ``` git clone https://github.com/fsystemweb/real-state-web-generator.git ```
- - ``` cd real-state-web-generator ```
-
-### Create virtual environment
- 1. Create a virtual environment called "venv"
-  - ``` python3.12 -m venv venv ```
- 2. Activate it
-  * On Linux / macOS:
-    - ``` source venv/bin/activate ```
-  * On Windows (PowerShell):
-    - ``` .\venv\Scripts\Activate.ps1 ```
- 3. Install dependecies:
-    - ``` pip install -r requirements.txt ```
-
-* Set environement variable
-  - OPENAI_API_KEY=your_openai_api_key_here
-
-## Running the API
- - ``` python -m app.main ```
-
-## Usage
-Example Request:
-- POST /generate-listing
+## API usage
+`POST /generate-listing`
 ```json
 {
   "title": "T3 apartment in Lisbon",
-  "location": {
-    "city": "Lisbon",
-    "neighborhood": "Campo de Ourique"
-  },
+  "location": { "city": "Lisbon", "neighborhood": "Campo de Ourique" },
   "features": {
-    "bedrooms": 3,
-    "bathrooms": 2,
-    "area_sqm": 120,
-    "balcony": true,
-    "parking": false,
-    "elevator": true,
-    "floor": 2,
-    "year_built": 2005
+    "bedrooms": 3, "bathrooms": 2, "area_sqm": 120, "balcony": true,
+    "parking": false, "elevator": true, "floor": 2, "year_built": 2005
   },
   "price": 650000,
   "listing_type": "sale",
   "language": "en"
 }
 ```
-
-Example response: 
+Response:
 ```json
 {
   "html": "<title>...</title>\n<meta ... > ...",
@@ -73,59 +66,37 @@ Example response:
     "structure_compliance": 5,
     "language_fluency_seo": 4,
     "multilingual_adaptability": 4,
-    "total_score": 4
+    "total_score": 4,
+    "missing_or_invalid_tags": []
   },
   "retries": 0,
   "failed_criteria_log": []
 }
 ```
+Only `title`, `location.city`, `listing_type` and `language` are required. If something fails, the API returns `{"error": "..."}`.
 
-## Run app
- 1. Start API
-  - ``` python -m app.main ```
- 2. Start Webapp
-  - ``` python -m http.server 5500```
- 3. Open browser on this url:
-    - ``` http://localhost:5500/public/ ```
+## Project structure
+```
+app/
+  main.py            FastAPI app and the route
+  chains.py          generator, evaluator and retry loop
+  prompt_loader.py   prompts from Opik, local files as fallback
+  models.py          request models
+  prompts/           prompt templates (examples and fallback)
+evaluation/          datasets, metrics and the evaluation run
+docs/EVALUATION.md   how the evaluation works
+public/index.html    demo page
+```
 
+## Observability and prompts (optional)
+Everything here is off unless `OPIK_URL_OVERRIDE` is set.
 
-## Observability (optional)
-Traces (prompts, outputs, evaluator scores and each retry) can be sent to a local [Comet Opik](https://github.com/comet-ml/opik) server. It is off by default.
+1. Start Opik locally (needs Docker), following the [official guide](https://www.comet.com/docs/opik/self-host/local_deployment): clone the repo and run `./opik.sh`.
+2. Set `OPIK_URL_OVERRIDE` in `.env` and restart the API. Each request shows up at `http://localhost:5173` as one trace; each attempt is tagged `attempt-N`.
+3. Prompts: `app/prompts/*.txt` are examples and the fallback. Run `python -m app.prompt_loader` to push them to Opik as `real-estate-generator` and `real-estate-evaluator`. If those exist in Opik, they are used instead (latest version, read at startup; the log says which source was used). Variables use Mustache with triple braces, e.g. `{{{property_json}}}`, so HTML is not escaped.
 
- 1. Start Opik (needs Docker), following the [official docs](https://www.comet.com/docs/opik/self-host/local_deployment):
-  - ``` git clone https://github.com/comet-ml/opik.git ```
-  - ``` cd opik && ./opik.sh ```
- 2. In this project's `.env`, uncomment `OPIK_URL_OVERRIDE` (see `.env.example`) and restart the API.
- 3. Call `POST /generate-listing` and open `http://localhost:5173`. Each call is one trace; every attempt is tagged `attempt-1`, `attempt-2`, ...
-
-Without these variables the app runs exactly as before.
-
-### Prompts
-The prompts in `app/prompts/*.txt` are examples and the fallback. If Opik is configured and has prompts named `real-estate-generator` and `real-estate-evaluator`, those are used instead (latest version, loaded at startup, so restart after editing). The startup log says which source was used.
-
- - Push the local prompts to Opik once: ``` python -m app.prompt_loader ```
- - Variables use Mustache with triple braces, e.g. `{{{property_json}}}`, so HTML is not escaped.
-
-## Evaluation Criteria by Request
-Each generated listing is automatically evaluated against:
-
-- ✅ Structure compliance (HTML tags + hierarchy)
-- 📣 Language fluency & SEO effectiveness
-- 🌍 Multilingual adaptability
-
-Each criterion is scored 0–5. The total score must be ≥ 3 to be accepted.
-
-## Evaluation Pipeline
-Runs the datasets in `evaluation/datasets/` through the generator and logs an experiment to Opik with two metrics that do not depend on the LLM judge:
-
-- **fact precision**: share of numbers in the listing that come from the input (low = invented details)
-- **fact recall**: share of the input numbers that appear in the listing (low = omitted details)
-
-With Opik running and `OPIK_URL_OVERRIDE` set (see Observability), run (makes paid OpenAI calls):
- - ``` python -m evaluation.run ```
- - ``` python -m evaluation.run --language pt ```
-
-Then open `http://localhost:5173` and compare experiments. Offline checks for the metrics (no API calls): ``` python -m evaluation.test_metrics ```
+## Evaluation
+Datasets in `evaluation/datasets/` are run through the generator and scored with fact precision and fact recall in an Opik experiment: `python -m evaluation.run` (paid API calls). Details in [docs/EVALUATION.md](docs/EVALUATION.md).
 
 ## License
 MIT License – free to use and modify.
