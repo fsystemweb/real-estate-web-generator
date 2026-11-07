@@ -50,3 +50,5 @@ coverage.xml
 logs/
 *.out
 *.err
+# Local Opik compose files fetched by scripts/opik.sh
+.opik/

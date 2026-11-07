@@ -5,6 +5,7 @@ FastAPI service that turns structured property JSON into SEO-optimized, multilin
 ## Commands
 - Install: `python3.12 -m venv venv`, activate it, then `pip install -r requirements.txt`
 - Run the API (port 8000): `python -m app.main`
+- Start local Opik (Docker): `scripts/opik.sh [up|down|status|logs|reset]`
 - Run the demo web page: `python -m http.server 5500`, then open `http://localhost:5500/public/`
 - Evaluation batch: `python -m evaluation.run [--language en|pt|es]` (calls the OpenAI API, logs an experiment to Opik; needs Opik running). Offline metric checks: `python -m evaluation.test_metrics`
 - Tests and lint: none configured yet

@@ -93,7 +93,7 @@ public/index.html    demo page
 ## Observability and prompts (optional)
 Everything here is off unless `OPIK_URL_OVERRIDE` is set.
 
-1. Start Opik locally (needs Docker), following the [official guide](https://www.comet.com/docs/opik/self-host/local_deployment): clone the repo and run `./opik.sh`.
+1. Start Opik locally (needs Docker and git): `scripts/opik.sh`. It fetches the official compose files into `.opik/` (git-ignored) and starts a lightweight stack (MySQL, Redis, ClickHouse, ZooKeeper, MinIO, backend and UI; no python-backend or guardrails). The first run pulls several images. UI at `http://localhost:5173`. Other commands: `scripts/opik.sh down` (stop, keep data), `status`, `logs`, `reset` (stop and delete data). For educational use only; for anything else follow the [official guide](https://www.comet.com/docs/opik/self-host/local_deployment).
 2. Set `OPIK_URL_OVERRIDE` in `.env` and restart the API. Each request shows up at `http://localhost:5173` as one trace; each attempt is tagged `attempt-N`.
 3. Prompts: `app/prompts/*.txt` are examples and the fallback. Run `python -m app.prompt_loader` to push them to Opik as `real-estate-generator` and `real-estate-evaluator`. If those exist in Opik, they are used instead (latest version, read at startup; the log says which source was used). Variables use Mustache with triple braces, e.g. `{{{property_json}}}`, so HTML is not escaped.
 
