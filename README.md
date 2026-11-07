@@ -110,27 +110,16 @@ Each generated listing is automatically evaluated against:
 Each criterion is scored 0–5. The total score must be ≥ 3 to be accepted.
 
 ## Evaluation Pipeline
+Runs the datasets in `evaluation/datasets/` through the generator and logs an experiment to Opik with two metrics that do not depend on the LLM judge:
 
-![Evaluation Pipeline Diagram](evaluation-pipeline.png)
+- **fact precision**: share of numbers in the listing that come from the input (low = invented details)
+- **fact recall**: share of the input numbers that appear in the listing (low = omitted details)
 
-### Execution
-- ``` http://localhost:5500/public/ ```
+With Opik running and `OPIK_URL_OVERRIDE` set (see Observability), run (makes paid OpenAI calls):
+ - ``` python -m evaluation.run ```
+ - ``` python -m evaluation.run --language pt ```
 
-### Results 
-
-- Logs: ``` evaluation/results/evaluation_results.json ```
-
-#### Average score by language
-
-![Average score by language](evaluation/results/avg_scores_by_language.png)
-
-#### Missing tags by language
-
-![Missing tags by language](evaluation/results/missing_tags_by_language.png)
-
-#### Total score distribution
-
-![Total score distribution](evaluation/results/total_score_distribution.png)
+Then open `http://localhost:5173` and compare experiments. Offline checks for the metrics (no API calls): ``` python -m evaluation.test_metrics ```
 
 ## License
 MIT License – free to use and modify.
