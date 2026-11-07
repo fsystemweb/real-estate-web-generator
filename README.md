@@ -40,8 +40,8 @@ Optional demo page (in another terminal): `python -m http.server 5500`, then ope
 | Variable | Required | Description |
 |---|---|---|
 | `OPENAI_API_KEY` | yes | OpenAI API key |
-| `GENERATOR_LLM` | no | Model that generates the listing (default `gpt-4-turbo`) |
-| `EVALUATOR_LLM` | no | Model that scores it (default `gpt-4o-mini`) |
+| `GENERATOR_LLM` | no | Model that generates the listing (default `gpt-6-luna`) |
+| `EVALUATOR_LLM` | no | Model that scores it (default `gpt-5-nano`) |
 | `OPIK_URL_OVERRIDE` | no | Opik API URL, e.g. `http://localhost:5173/api`. Turns on tracing and Opik prompts |
 | `OPIK_PROJECT_NAME` | no | Opik project for traces |
 

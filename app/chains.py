@@ -49,8 +49,16 @@ evaluator_prompt = PromptTemplate.from_template(evaluator_template, template_for
 
 # Initialize ChatOpenAI with API key
 # The stronger model generates, the light one evaluates. Override with env vars.
-generator_llm = ChatOpenAI(model=os.getenv("GENERATOR_LLM", "gpt-4-turbo"), temperature=0.7, api_key=openai_api_key)
-evaluator_llm = ChatOpenAI(model=os.getenv("EVALUATOR_LLM", "gpt-4o-mini"), temperature=0, api_key=openai_api_key)
+def build_llm(model, temperature):
+    """ChatOpenAI client; only gpt-4*/gpt-3.5* are known to accept a custom temperature, newer models need the default."""
+    kwargs = {"model": model, "api_key": openai_api_key}
+    if re.match(r"^(gpt-4|gpt-3\.5)", model):
+        kwargs["temperature"] = temperature
+    return ChatOpenAI(**kwargs)
+
+
+generator_llm = build_llm(os.getenv("GENERATOR_LLM", "gpt-6-luna"), 0.7)
+evaluator_llm = build_llm(os.getenv("EVALUATOR_LLM", "gpt-5-nano"), 0)
 
 # Setup chains using LCEL (LangChain Expression Language)
 output_parser = StrOutputParser()
