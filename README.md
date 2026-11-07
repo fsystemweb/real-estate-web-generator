@@ -100,6 +100,12 @@ Traces (prompts, outputs, evaluator scores and each retry) can be sent to a loca
 
 Without these variables the app runs exactly as before.
 
+### Prompts
+The prompts in `app/prompts/*.txt` are examples and the fallback. If Opik is configured and has prompts named `real-estate-generator` and `real-estate-evaluator`, those are used instead (latest version, loaded at startup, so restart after editing). The startup log says which source was used.
+
+ - Push the local prompts to Opik once: ``` python -m app.prompt_loader ```
+ - Variables use Mustache with triple braces, e.g. `{{{property_json}}}`, so HTML is not escaped.
+
 ## Evaluation Criteria by Request
 Each generated listing is automatically evaluated against:
 

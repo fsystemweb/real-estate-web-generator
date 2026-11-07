@@ -5,9 +5,9 @@ load_dotenv()
 import re
 import json
 
-from pathlib import Path
 from fastapi import HTTPException
 from app.models import PropertyData
+from app.prompt_loader import PROMPTS, load_prompt
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -39,16 +39,13 @@ openai_api_key = os.getenv("OPENAI_API_KEY")
 if not openai_api_key:
     raise EnvironmentError("OPENAI_API_KEY not found in environment")
 
-# Load prompt templates from files
-PROMPT_DIR = Path(__file__).resolve().parent / "prompts"
-generator_template = (PROMPT_DIR / "generator_prompt_gpt-4o-mini.txt").read_text()
-evaluator_template = (PROMPT_DIR / "evaluator_prompt_gpt-4-turbo.txt").read_text()
+# Load prompt templates (Opik first, local files in app/prompts/ as fallback).
+# Both use Mustache syntax: {{{variable}}} (triple braces so HTML is not escaped).
+generator_template, _ = load_prompt("real-estate-generator", PROMPTS["real-estate-generator"])
+evaluator_template, _ = load_prompt("real-estate-evaluator", PROMPTS["real-estate-evaluator"])
 
-generator_prompt = PromptTemplate(
-    input_variables=["property_json", "language_name", "language_code"],
-    template=generator_template
-)
-evaluator_prompt = PromptTemplate(input_variables=["html_output"], template=evaluator_template)
+generator_prompt = PromptTemplate.from_template(generator_template, template_format="mustache")
+evaluator_prompt = PromptTemplate.from_template(evaluator_template, template_format="mustache")
 
 # Initialize ChatOpenAI with API key
 generator_llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.7, api_key=openai_api_key)

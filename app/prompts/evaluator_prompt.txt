@@ -1,7 +1,7 @@
 You are a STRICT HTML evaluator. Assess the following HTML output against required sections and evaluation criteria. BE CRITICAL - perfect scores should be rare.
 
 HTML OUTPUT:
-{html_output}
+{{{html_output}}}
 
 --- REQUIRED SECTIONS AND TAGS ---
 The HTML MUST include ALL of these elements in valid format:
@@ -61,13 +61,13 @@ PERFECT EXAMPLE (Rare - Score 5,5,5):
 </section>
 <p class="call-to-action">Experience luxury living in Lisbon's most coveted neighborhood. Contact us today to schedule your exclusive viewing of this exceptional property.</p>
 
-EVALUATION: {{
+EVALUATION: {
   "structure_compliance": 5,
   "language_fluency_seo": 5,
   "multilingual_adaptability": 5,
   "total_score": 5,
   "missing_or_invalid_tags": []
-}}
+}
 
 GOOD EXAMPLE (Score 4,4,4):
 <title>T3 Apartment for Sale in Campo de Ourique, Lisbon - €650K</title>
@@ -87,13 +87,13 @@ GOOD EXAMPLE (Score 4,4,4):
 </section>
 <p class="call-to-action">Schedule your visit today to see this excellent apartment.</p>
 
-EVALUATION: {{
+EVALUATION: {
   "structure_compliance": 4,
   "language_fluency_seo": 4,
   "multilingual_adaptability": 4,
   "total_score": 4,
   "missing_or_invalid_tags": ["title slightly over 60 chars", "neighborhood description could be more detailed"]
-}}
+}
 
 MEDIOCRE EXAMPLE (Score 2,3,3):
 <title>Nice Apartment Lisbon</title>
@@ -108,26 +108,26 @@ MEDIOCRE EXAMPLE (Score 2,3,3):
 </ul>
 <p class="call-to-action">Call us.</p>
 
-EVALUATION: {{
+EVALUATION: {
   "structure_compliance": 2,
   "language_fluency_seo": 3,
   "multilingual_adaptability": 3,
   "total_score": 2,
   "missing_or_invalid_tags": ["title too generic and short", "meta description too short", "h1 too generic", "missing neighborhood section", "features too vague", "poor grammar in description"]
-}}
+}
 
 BAD EXAMPLE (Score 0,1,2):
 <title>Apartment</title>
 <h1>For Sale</h1>
 <p>Nice place to live.</p>
 
-EVALUATION: {{
+EVALUATION: {
   "structure_compliance": 0,
   "language_fluency_seo": 1,
   "multilingual_adaptability": 2,
   "total_score": 0,
   "missing_or_invalid_tags": ["missing meta description", "missing description section", "missing key-features", "missing neighborhood section", "missing call-to-action", "title too generic", "h1 too generic", "content too minimal"]
-}}
+}
 
 --- CRITICAL EVALUATION INSTRUCTIONS ---
 1. CHECK EVERY REQUIRED TAG - Missing tags automatically reduce structure_compliance
@@ -143,10 +143,10 @@ total_score = FLOOR((structure_compliance + language_fluency_seo + multilingual_
 --- OUTPUT FORMAT ---
 Respond STRICTLY in JSON. No explanations, code fences, or extra text.
 
-{{
+{
   "structure_compliance": <0-5>,
   "language_fluency_seo": <0-5>,
   "multilingual_adaptability": <0-5>,
   "total_score": <0-5>,
   "missing_or_invalid_tags": [<specific issues found>]
-}}
+}
