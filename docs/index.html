@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Real Estate Listing Generator - Docs</title>
+  <meta name="description" content="Docs for the real estate listing generator: FastAPI, LangChain, OpenAI and Opik.">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/themes/vue.css">
+</head>
+<body>
+  <div id="app">Loading docs...</div>
+  <script>
+    window.$docsify = {
+      name: 'Listing Generator',
+      repo: 'fsystemweb/real-state-web-generator',
+      loadSidebar: true,
+      subMaxLevel: 2,
+      auto2top: true,
+      relativePath: true,
+      search: { placeholder: 'Search', noData: 'No results', depth: 3 },
+      copyCode: { buttonText: 'Copy', successText: 'Copied' },
+      plugins: [function (hook) {
+        hook.afterEach(function (html, next) {
+          // docsify renders ```mermaid blocks as <pre data-lang="mermaid"><code>; turn them into mermaid divs
+          var out = html.replace(/<pre[^>]*data-lang="mermaid"[^>]*><code[^>]*>([\s\S]*?)<\/code><\/pre>/g, function (_, code) {
+            var txt = document.createElement('textarea');
+            txt.innerHTML = code;
+            return '<div class="mermaid">' + txt.value.replace(/</g, '&lt;') + '</div>';
+          });
+          next(out);
+        });
+        hook.doneEach(function () {
+          if (window.mermaid) { mermaid.initialize({ startOnLoad: false }); mermaid.init(undefined, document.querySelectorAll('.mermaid')); }
+        });
+      }]
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/docsify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/plugins/search.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@2.1.1/dist/docsify-copy-code.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js"></script>
+</body>
+</html>
