@@ -1,4 +1,4 @@
-# real-state-web-generator
+# real-estate-web-generator
 
 A small FastAPI service that turns structured property data (JSON) into SEO-optimized HTML listings in English, Portuguese or Spanish. It is an educational example of LLM generation, automatic evaluation with retries, tracing and prompt management.
 
