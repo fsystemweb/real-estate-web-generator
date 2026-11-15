@@ -8,6 +8,7 @@ FastAPI service that turns structured property JSON into SEO-optimized, multilin
 - Start local Opik (Docker): `scripts/opik.sh [up|down|status|logs|reset]`
 - Run the demo web page: `python -m http.server 5500`, then open `http://localhost:5500/public/`
 - Evaluation batch: `python -m evaluation.run [--language en|pt|es]` (calls the OpenAI API, logs an experiment to Opik; needs Opik running). Offline metric checks: `python -m evaluation.test_metrics`
+- Docs site: `docsify serve docs` (or `python -m http.server 3000 --directory docs`)
 - Tests and lint: none configured yet
 
 ## Conventions
@@ -20,6 +21,8 @@ FastAPI service that turns structured property JSON into SEO-optimized, multilin
 - `public/index.html`: static front end that calls the API.
 - Config comes from env vars: `OPENAI_API_KEY`, optional `GENERATOR_LLM` / `EVALUATOR_LLM` (model names; the stronger model generates, the light one evaluates), plus optional `OPIK_URL_OVERRIDE` / `OPIK_PROJECT_NAME` to enable Opik tracing (see `.env.example`). Tracing is off when they are unset.
 - If you rename a prompt file, update the file names in `PROMPTS` in `app/prompt_loader.py`.
+- `app/opik_sync.py` runs when the API starts: with Opik configured it creates the prompts and the `real-estate-<language>` datasets that are missing in Opik (it never overwrites them) and never stops the API from starting.
+- `docs/` is the docsify site (getting started, architecture, evaluation, observability); update it with behavior changes.
 
 ## Boundaries
 - Always: check that edits to `app/prompts/` still cover en, pt and es.
